@@ -3,6 +3,7 @@ import { BackButton } from '@/components/back-button'
 import { Header } from '@/components/header'
 import { RatingBadge } from '@/components/rating-badge'
 import { PosterImage } from '@/components/poster-image'
+import { ViewTransitionElement } from '@/components/view-transition-element'
 import type { MovieDetails, OmdbErrorResponse } from '@/types/movie'
 
 interface MoviePageProps {
@@ -52,20 +53,31 @@ export default async function MoviePage({ params }: MoviePageProps) {
 
 				<div className="grid md:grid-cols-[300px_1fr] gap-8">
 					<div className="w-full max-w-[300px]">
-						<div className="aspect-[2/3] relative rounded-lg overflow-hidden">
+						<ViewTransitionElement
+							name={`poster-${id}`}
+							className="aspect-[2/3] relative rounded-lg overflow-hidden"
+						>
 							<PosterImage
 								src={movie.Poster}
 								alt={`${movie.Title} poster`}
 								className="w-full h-full object-cover"
 							/>
-						</div>
+						</ViewTransitionElement>
 					</div>
 
 					<div className="space-y-6">
 						<div>
-							<h1 className="text-4xl font-bold mb-2">{movie.Title}</h1>
+							<ViewTransitionElement
+								name={`title-${id}`}
+								as="h1"
+								className="text-4xl font-bold mb-2"
+							>
+								{movie.Title}
+							</ViewTransitionElement>
 							<div className="flex flex-wrap gap-3 text-sm text-muted-foreground mb-4">
-								<span>{movie.Year}</span>
+								<ViewTransitionElement name={`year-${id}`} as="span">
+									{movie.Year}
+								</ViewTransitionElement>
 								<span>•</span>
 								<span>{movie.Rated}</span>
 								<span>•</span>

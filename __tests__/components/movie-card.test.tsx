@@ -8,6 +8,14 @@ jest.mock('next/link', () => {
 	}
 })
 
+jest.mock('next/navigation', () => ({
+	useRouter: () => ({
+		push: jest.fn(),
+		replace: jest.fn(),
+		prefetch: jest.fn(),
+	}),
+}))
+
 describe('MovieCard', () => {
 	const mockMovie: MovieSearchResult = {
 		Title: 'Blade Runner',
