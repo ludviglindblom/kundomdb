@@ -11,12 +11,9 @@ interface MoviePageProps {
 
 async function getMovieDetails(id: string): Promise<MovieDetails | null> {
 	try {
-		const response = await fetch(
-			`http://localhost:3000/api/movies/${id}`,
-			{
-				cache: 'no-store',
-			}
-		)
+		const response = await fetch(`http://localhost:3000/api/movies/${id}`, {
+			cache: 'no-store',
+		})
 
 		if (!response.ok) {
 			return null
