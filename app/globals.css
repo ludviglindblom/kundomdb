@@ -77,3 +77,15 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+/* View Transition animations - smooth transitions for all elements */
+@media (prefers-reduced-motion: no-preference) {
+	::view-transition-group(root) {
+		animation-duration: 0.5s;
+	}
+
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation-duration: 0.5s;
+	}
+}
