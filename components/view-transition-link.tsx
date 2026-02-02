@@ -63,11 +63,13 @@ export function ViewTransitionLink({
 		})
 
 		// Start view transition
-		document.startViewTransition(async () => {
-			await domChangePromise
-		}).finished.finally(() => {
-			isTransitioning.current = false
-		})
+		document
+			.startViewTransition(async () => {
+				await domChangePromise
+			})
+			.finished.finally(() => {
+				isTransitioning.current = false
+			})
 	}
 
 	return (

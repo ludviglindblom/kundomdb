@@ -14,23 +14,29 @@ export function MovieCard({ movie }: MovieCardProps) {
 
 	useEffect(() => {
 		if (posterRef.current) {
-			posterRef.current.style.setProperty('view-transition-name', `poster-${movie.imdbID}`)
+			posterRef.current.style.setProperty(
+				'view-transition-name',
+				`poster-${movie.imdbID}`
+			)
 		}
 		if (titleRef.current) {
-			titleRef.current.style.setProperty('view-transition-name', `title-${movie.imdbID}`)
+			titleRef.current.style.setProperty(
+				'view-transition-name',
+				`title-${movie.imdbID}`
+			)
 		}
 		if (yearRef.current) {
-			yearRef.current.style.setProperty('view-transition-name', `year-${movie.imdbID}`)
+			yearRef.current.style.setProperty(
+				'view-transition-name',
+				`year-${movie.imdbID}`
+			)
 		}
 	}, [movie.imdbID])
 
 	return (
 		<ViewTransitionLink href={`/movie/${movie.imdbID}`}>
 			<div className="rounded-lg border bg-card text-card-foreground overflow-hidden hover:shadow-lg transition-shadow cursor-pointer h-full">
-				<div
-					ref={posterRef}
-					className="aspect-[2/3] relative overflow-hidden"
-				>
+				<div ref={posterRef} className="aspect-[2/3] relative overflow-hidden">
 					<PosterImage
 						src={movie.Poster}
 						alt={`${movie.Title} poster`}

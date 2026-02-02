@@ -27,8 +27,12 @@ describe('Home Page', () => {
 		render(<Home />)
 
 		expect(screen.getByText('KundOMDb')).toBeInTheDocument()
-		expect(screen.getByPlaceholderText('Search for movies...')).toBeInTheDocument()
-		expect(screen.getByText('Start typing to search for movies')).toBeInTheDocument()
+		expect(
+			screen.getByPlaceholderText('Search for movies...')
+		).toBeInTheDocument()
+		expect(
+			screen.getByText('Start typing to search for movies')
+		).toBeInTheDocument()
 	})
 
 	it('should show loading state during search', async () => {

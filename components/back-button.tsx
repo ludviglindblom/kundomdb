@@ -42,11 +42,13 @@ export function BackButton() {
 			}, 1000)
 		})
 
-		document.startViewTransition(async () => {
-			await domChangePromise
-		}).finished.finally(() => {
-			isTransitioning.current = false
-		})
+		document
+			.startViewTransition(async () => {
+				await domChangePromise
+			})
+			.finished.finally(() => {
+				isTransitioning.current = false
+			})
 	}
 
 	return (
